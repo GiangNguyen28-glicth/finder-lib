@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { RmqContext, RmqOptions, Transport } from '@nestjs/microservices';
-import { getAuthClient, RabbitClient } from 'libs/shared';
 import { Client } from '../common/const/const';
+import { RabbitClient } from './rabbitmq.custom';
+import { getAuthClient } from '../utils';
 @Injectable()
 export class RabbitService {
   public clientRb: RabbitClient;

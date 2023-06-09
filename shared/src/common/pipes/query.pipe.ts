@@ -1,5 +1,5 @@
 import { PipeTransform, Injectable } from '@nestjs/common';
-import { ArgumentMetadata, IFilterDTO } from 'libs/shared';
+import { ArgumentMetadata, IFilterDTO } from '../interfaces';
 
 @Injectable()
 export class ValidationMultiIdsPipe implements PipeTransform {

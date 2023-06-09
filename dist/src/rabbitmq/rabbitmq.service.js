@@ -14,22 +14,23 @@ exports.RabbitService = void 0;
 const common_1 = require("@nestjs/common");
 const config_1 = require("@nestjs/config");
 const microservices_1 = require("@nestjs/microservices");
-const shared_1 = require("libs/shared");
 const const_1 = require("../common/const/const");
+const rabbitmq_custom_1 = require("./rabbitmq.custom");
+const utils_1 = require("../utils");
 let RabbitService = class RabbitService {
     constructor(configService) {
         this.configService = configService;
     }
     initRmq() {
-        const { username, password, host, port } = (0, shared_1.getAuthClient)(this.configService, const_1.Client.RMQ);
+        const { username, password, host, port } = (0, utils_1.getAuthClient)(this.configService, const_1.Client.RMQ);
         const url = `amqp://${username}:${password}@${host}:${port}`;
-        this.clientRb = new shared_1.RabbitClient({
+        this.clientRb = new rabbitmq_custom_1.RabbitClient({
             urls: [url],
             noAck: false,
         });
     }
     getOptions(queue, noAck = false) {
-        const { username, password, host, port } = (0, shared_1.getAuthClient)(this.configService, const_1.Client.RMQ);
+        const { username, password, host, port } = (0, utils_1.getAuthClient)(this.configService, const_1.Client.RMQ);
         const url = `amqp://${username}:${password}@${host}:${port}`;
         return {
             transport: microservices_1.Transport.RMQ,

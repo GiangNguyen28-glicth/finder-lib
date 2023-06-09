@@ -1,6 +1,6 @@
 import { Logger } from '@nestjs/common';
-import { BaseInterfaceSchema } from 'libs/shared';
 import { Connection, FilterQuery, Model, UpdateQuery } from 'mongoose';
+import { BaseInterfaceSchema } from '../common';
 export declare abstract class AbstractRepository<TDocument> implements BaseInterfaceSchema<TDocument> {
     protected readonly model: Model<TDocument>;
     private readonly connection;
